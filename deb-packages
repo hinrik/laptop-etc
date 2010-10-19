@@ -20,7 +20,6 @@ tp-smapi-dkms
 virtualbox-ose-qt
 virtualbox-ose-dkms
 ecryptfs-utils
-adduser: adduser
 hdparm
 
 # laptop support
