@@ -1,0 +1,2 @@
+Defaults !mail_badpass
+%sudo ALL=(ALL:ALL) NOPASSWD: ALL
