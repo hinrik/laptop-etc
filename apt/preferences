@@ -3,14 +3,14 @@
 # packages in sources.list.d/ which don't have a release tag like 'testing'
 # (e.g. the IceWeasel repository).
 
-Explanation: We normally use testing for everything
-Package: *
-Pin: release a=testing
-Pin-Priority: 500
-
-Explanation: If we install anything not from testing it's usually from unstable
+Explanation: We normally use unstable for everything
 Package: *
 Pin: release a=unstable
+Pin-Priority: 500
+
+Explanation: Keep testing around
+Package: *
+Pin: release a=testing
 Pin-Priority: 400
 
 Explanation: We install select broken packages from stable
@@ -22,23 +22,3 @@ Explanation: Experimental has the lowest priority, for obvious reasons
 Package: *
 Pin: release a=experimental
 Pin-Priority: 200
-
-Explanation: We need these for the latest IceWeasel
-Package: libnspr4-0d libnss3-1d
-Pin: release a=unstable
-Pin-Priority: 600
-
-Explanation: We need a version compiled against ffmpeg-0.6 to play .mov
-Package: gstreamer0.10-ffmpeg
-Pin: release a=experimental
-Pin-Priority: 600
-
-Explanation: The gwibber version in testing is pretty old
-Package: gwibber
-Pin: release a=unstable
-Pin-Priority: 600
-
-Explanation: The latest version of pokerth is needed for online play
-Package: pokerth pokerth-data
-Pin: release a=experimental
-Pin-Priority: 600
