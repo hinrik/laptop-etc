@@ -10,8 +10,6 @@ use Pod::Usage;
 
 GetOptions() or pod2usage();
 
-die "$0 needs to run with root privileges\n" if $> != '0';
-
 my @explicit = @ARGV;
 my $cfg = '/etc/deb-packages';
 my (@src, @bin);
@@ -30,7 +28,7 @@ while (my $line = <$fh>) {
 }
 
 if (!@explicit) {
-    system "aptitude install @bin";
+    system "sudo aptitude install @bin";
 }
 
 if (@src) {
@@ -49,11 +47,11 @@ if (@src) {
             next if are_installed(@$bin_packs);
         }
 
-        system "aptitude build-dep $src_pack";
-        system "apt-get source -b $src_pack";
+        system "sudo aptitude build-dep $src_pack";
+        system "sudo apt-get source -b $src_pack";
         for my $binary (@$bin_packs) {
             my $deb = (glob "${binary}_*.deb")[0];
-            system "dpkg -i $deb";
+            system "sudo dpkg -i $deb";
         }
     }
     chdir $old_dir;
